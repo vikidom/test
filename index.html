@@ -56,7 +56,7 @@
     
         /* Стили для кнопок */
         button {
-            background-color: rgba(255, 111, 0, 0.816); /* Цвет фона */
+            background-color: rgba(152, 199, 137, 0.816); /* Цвет фона */
             border: none; /* Граница */
             color: white; /* Цвет текста */
             display: inline-block; /* Тип отображения */
@@ -106,8 +106,8 @@
   </head>
   <body>
     <div id="header">
-      <h1>Вычисление цены в рассрочку</h1>
-     <!-- <p>Пожалуйста, заполните форму ниже</p> -->
+      <h1>Рассрочка</h1>
+     <!-- <p>Пожалуйста, заполните форму ниже</p>    убрал в коммент-->
   </div>
     <div>
       <form onsubmit="calculate(event)">
@@ -129,10 +129,15 @@
           <option value="Охранка">Охранка</option>
           <option value="Кондиционеры">Кондиционеры</option>
         </select><br>
-        <br>
         <button type="submit">Вычислить</button>
         <button id="reset-btn" type="button">Сбросить</button>
       </form>
+      <br>
+      
+      <!-- Добавляем логотип из хостинга или из локальной папки -->
+      <!-- <img src="https://raw.githubusercontent.com/vikidom/vikidom.github.io/main/Logo.png" alt="Логотип"> -->
+      <img src="logo.png" alt="Логотип">
+
       <div id="results"></div>
     </div>
 
@@ -178,7 +183,7 @@
         const product = document.getElementById("product").value;
         const nameClient = document.getElementById("nameClient").value;
         const resultsText = `
-          <h2>Информация:</h2>
+        <!--   <h2> Информация: </h2>  убрал в коммент   -->
           <table>
             <tr>
     <td>Имя клиента:</td>
