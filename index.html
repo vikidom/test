@@ -183,9 +183,10 @@
     </div>
 
     <script>
-      
+        // определяем устройство (смартфон) и задаем условия
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.body.style.zoom = "200%";
+          // document.body.style.zoom = "200%"; // 
+          document.body.style.transform = "scale(" + window.innerWidth/960 + ")";
         }
       
       const cityInput = document.getElementById("city");
