@@ -189,9 +189,8 @@
           // document.body.style.transform = "scale(" + window.innerWidth";
           let screenWidth = window.innerWidth;
           let zoomValue = screenWidth / 450;
-          document.body.style.zoom = zoomValue;
-          document.body.style.results.padding = "0.01rem 0rem";
-        }
+          resultsDiv.style.padding = "0.01rem 0rem";
+          }
       
       const cityInput = document.getElementById("city");
       cityInput.addEventListener("keypress", function(event) {
