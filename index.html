@@ -277,11 +277,13 @@
           let screenWidth = window.innerWidth;
           let zoomValue = screenWidth / 420;
           document.body.style.zoom = zoomValue;
+          const resultsDiv = document.getElementById("results");
           resultsDiv.style.padding = "0.01rem 0rem"; /* Отступы. */
-        }
-        else {
-          resultsDiv.style.padding = "1rem 0rem"; /* Отступы. */
-          }
+         }
+         else {
+          const resultsDiv = document.getElementById("results");
+          resultsDiv.style.padding = "1.5rem 0rem"; /* Отступы. */
+         }
     </script>
   </body>
 </html>
