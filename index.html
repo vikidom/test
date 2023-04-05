@@ -29,7 +29,7 @@
             max-width: 400px; /* Максимальная ширина */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень блока */
         }
-        /* Стили для меток label */
+        /* Стили для меток label, Блок ввода данных */
         label {
             display: inline-block; /* Тип отображения */
             width: 150px; /* Ширина */
@@ -190,6 +190,7 @@
           let screenWidth = window.innerWidth;
           let zoomValue = screenWidth / 450;
           document.body.style.zoom = zoomValue;
+          document.body.style.results.padding = "0.01rem 0rem";
         }
       
       const cityInput = document.getElementById("city");
