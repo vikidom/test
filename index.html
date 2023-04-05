@@ -92,7 +92,7 @@
         /* Стили для блока результатов */
         #results {
             background-color: #ffffff; /* Цвет фона */
-            padding: 0.01rem 0rem; /* Отступы */
+            /* padding: 0.01rem 0rem; /* Отступы.           указал в Script, в конце */
             border-radius: 8px; /* Скругление углов */
             margin: auto; /* Отступы */
             margin-top: 15px; /* отступ сверху */
@@ -277,7 +277,9 @@
           let screenWidth = window.innerWidth;
           let zoomValue = screenWidth / 420;
           document.body.style.zoom = zoomValue;
-          resultsDiv.style.padding = "1rem 0rem";
+          resultsDiv.style.padding = 0.01rem 0rem; /* Отступы. */
+        else {
+          resultsDiv.style.padding = 1rem 0rem; /* Отступы. */
           }
     </script>
   </body>
