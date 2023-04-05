@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Рассрочка</title>
     <!-- Иконка сайта-->
-    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
 
     <style>
       body {
@@ -99,7 +99,7 @@
             line-height: 1.5; /* Межстрочный интервал */
             white-space: nowrap; /* Прокрутка текста */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень блока */
-            background-image: url('Logo2.png') ;  /* устанавливаем изображение в качестве фона */
+            background-image: url('../img/Logo2.png'); /* устанавливаем изображение в качестве фона */
             background-repeat: no-repeat; /* запрещаем повторять фоновое изображение */
             background-size: 25%; /* устанавливаем размер фонового изображения */
             background-position: top 10px left 40px; /* устанавливаем позицию фонового изображения с помощью отступов */
@@ -139,13 +139,13 @@
   <body>
     <div id="header">
     <!-- <h1>РАССРОЧКА</h1> -->
-      <img src="rassrochka.png" alt="РАССРОЧКА">
+      <img src="../img/rassrochka.png" alt="РАССРОЧКА">
      <!-- <p>Пожалуйста, заполните форму ниже</p>    убрал в коммент-->
   </div>
     <div>
       <form onsubmit="calculate(event)">
         <label for="sum">Сумма:</label>
-        <input type="number" id="sum" name="sum" value="100000"><br>
+        <input type="number" id="sum" name="sum" value=""><br>
         <label for="rate">Ставка (%):</label>
         <input type="number" id="rate" name="rate" value="16"><br>
         <label for="city">Город:</label>
