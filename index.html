@@ -1,289 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Рассрочка</title>
-    <!-- Иконка сайта-->
-    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
+<head>
+	<title>Моя веб-страница</title>
+	<link rel="icon" type="image/x-icon" href="../img/icon.ico">
 
-    <style>
-      body {
+	<style>
+		body {
         font-family: system-ui,"Segoe UI","Open Sans", "Helvetica Neue", sans-serif;
         background-color: #f0f0f0;
-        line-height: 1.0; /* Межстрочный интервал */
+        line-height: 3; /* Межстрочный интервал */
         text-align: center; /* Выравнивание текста */
         /* font-size: 1.1em; /* увеличить размер шрифта на % */
-        zoom: 120%; /* увеличить на 20% */
-}
-        /* Стили для формы ввода данных*/
-        form {
-            display: block ; /* Тип отображения */
-            flex-direction: column; /* Направление элементов */
-            align-items: center; /* Выравнивание элементов */
-            gap: 0.5rem; /* Расстояние между элементами */
-            background-color: #ffffff; /* Цвет фона */
-            padding: 1rem 0rem; /* Отступы */
-            border-radius: 8px; /* Скругление углов */
-            line-height: 1.5; /* Межстрочный интервал */
-            margin: 0 auto; /* Автоматические отступы слева и справа */
-            max-width: 400px; /* Максимальная ширина */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень блока */
-        }
-        /* Стили для меток label, Блок ввода данных */
-        label {
-            display: inline-block; /* Тип отображения */
-            width: 150px; /* Ширина */
-            line-height: 2.7; /* Межстрочный интервал */
-            text-align: right; /* Выравнивание текста */
-            margin-right: 0.5rem; /* Отступ справа */
-        }
-
-        /* Стили для полей ввода */
-        input {
-            width: 190px; /* Ширина */
-            height: 15px; /* Высота */
-            padding: 0.5rem; /* Отступы */
-            border: none; /* Граница */
-            border-radius: 5px; /* Скругление углов */
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Тень блока */
-            background-color: #f0f0f0; /* Цвет фона */
-            color: #555; /* Цвет текста */
-            font-size: 1.0em; /* увеличить размер шрифта на % */
-        }
-
-        /* Стили для полей ввода при фокусе */
-        input:focus {
-            outline: none; /* Обводка */
-            background-color: #ffffff; /* Цвет фона */
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Тень блока */
-        }
-
-        /* Стили для кнопок */
-        button {
-            background-color: gray; /* Цвет фона */
-            border: none; /* Граница */
-            color: white; /* Цвет текста */
-            display: inline-block; /* Тип отображения */
-            font-size: 1.1rem; /* Размер шрифта */
-            font-weight: bold;
-            padding: 0.7rem 0.5rem; /* Отступы */
-            border-radius: 10px; /* Скругление углов */
-            cursor: pointer; /* Курсор */
-            transition: background-color 0.3s ease; /* Переход */
-            width: 130px; /* Ширина */
-            margin-right: 15px; /* Расстояние между кнопками */
-            margin-top: 10px; /* добавляем отступ сверху */
-            }
-        /* Стили для кнопок при наведении */
-        button:hover {
-            background-color: limegreen; /* Цвет фона при наведении */
-            font-size: 1.1rem; /* Размер шрифта */ }
-
-        /* Стили для кнопок при нажатии */
-        button:active {
-            background-color: DarkGreen;
-            transform: scale(0.99); }
-
-        #reset-btn:hover {
-            background-color: red; /* Цвет фона при наведении */ }
-            #reset-btn:active {
-            background-color: DarkRed; }
-
-        /* Стили для блока результатов */
-        #results {
-            background-color: #ffffff; /* Цвет фона */
-            /* padding: 0.01rem 0rem; /* Отступы.           указал в Script, в конце */
-            border-radius: 8px; /* Скругление углов */
-            margin: auto; /* Отступы */
-            margin-top: 15px; /* отступ сверху */
-            max-width: 400px; /* Максимальная ширина */
-            line-height: 1.5; /* Межстрочный интервал */
-            white-space: nowrap; /* Прокрутка текста */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень блока */
-            background-image: url('../img/Logo2.png'); /* устанавливаем изображение в качестве фона */
-            background-repeat: no-repeat; /* запрещаем повторять фоновое изображение */
-            background-size: 25%; /* устанавливаем размер фонового изображения */
-            background-position: top 5px left 150px; /* устанавливаем позицию фонового изображения с помощью отступов */
-        }
-        table {
-          /* margin-top: 20px; /* отступ сверху */
-          margin: 20px auto;
-        }
-        td {
-            padding-left: 10px;
-            text-align: right;
-        }
-
-        header {
-          padding: 1rem; /* Отступы */
-        }
-        h1, h2 {
-            text-align: center;
-        }
-
-
-        /* Стили для изображения */
-        img {
-            max-width: 300px; /* Максимальная ширина изображения в % или px */
-          /*  height: auto; /* Высота изображения автоматически подстраивается, чтобы сохранить пропорции */
-          /*  margin: 0px; /* Отступы вокруг изображения установлены в 0 */
-        }
-
-        select {
-          font-size: 1.0em; /* увеличить размер шрифта на % */
-          width: 205px; /* Ширина */
-          height: 30px; /* Высота */
-        }
-      
-      /* Стили для экранов с шириной до 768px */
-      @media (max-width: 768px) {
-        /* Изменение размера шрифта */
-        /* body {
-            zoom: 150%;
-           } */
+        /* zoom: 120%; /* увеличить на 20% */
       }
 
-    </style>
-  </head>
-  <body>
-    <div id="header">
-    <!-- <h1>РАССРОЧКА</h1> -->
-      <img src="../img/rassrochka.png" alt="РАССРОЧКА">
-     <!-- <p>Пожалуйста, заполните форму ниже</p>    убрал в коммент-->
-  </div>
-    <div>
-      <form onsubmit="calculate(event)">
-        <label for="sum">Сумма:</label>
-        <input type="number" id="sum" name="sum" value=""><br>
-        <label for="rate">Ставка (%):</label>
-        <input type="number" id="rate" name="rate" value="16"><br>
-        <label for="city">Город:</label>
-        <input type="text" id="city" name="city"><br>
-        <label for="phone">Телефон:</label>
-        <input type="text" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" maxlength="13"><br>
-        <label for="city">Имя клиента:</label>
-        <input type="text" id="nameClient" name="nameClient"><br>
-        <label for="product">Вид товара:</label>
-        <select id="product" name="product">
-          <option value="Видеонаблюдение">Видеонаблюдение</option>
-          <option value="Домофония">Домофония</option>
-          <option value="Автоматика ворот">Автоматика ворот</option>
-          <option value="Охранка">Охранка</option>
-          <option value="Кондиционеры">Кондиционеры</option>
-        </select><br>
-        <button type="submit">Вычислить</button>
-        <button id="reset-btn" type="button">Сбросить</button>
-      </form>
+		img {
+			zoom: 100%;
+		}
 
-      <!-- Добавляем картинку из хостинга или из локальной папки -->
-      <!-- <img src="https://raw.githubusercontent.com/vikidom/vikidom.github.io/main/Logo.png" alt="Логотип"> -->
-      <!-- <img src="rassrochka.jpg" alt="акция"> -->
+		.button {
+			background-size: cover;
+			border: none;
+			width: 300px;
+			height: 300px;
+			display: inline-block;
+			margin-right: 10px;
+			cursor: pointer;
+			background-repeat: no-repeat;
+			border-radius: 30px; /* Скругление углов */
+		}
 
-      <div id="results"></div>
-    </div>
+		.button1 {
+			background-image: url('../img/icon-Percent1.png');   }
+		.button2 {
+			background-image: url('../img/icon-Rassrochka.png');  }
+		.button3 {
+			background-image: url('../img/icon-Rassrochka.png');  }
+		.button4 {
+			background-image: url('../img/icon-Percent1.png');  }
+			
+		/* эффекты наведения на кнопку */
+		.button:hover {
+			/* transform: translateY(2px); /* эффект выпуклости при наведении */
+			/* box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25); /* эффект тени при наведении */
+			filter: brightness(110%); /* добавляем яркость */
+		}
+		/* эффект нажатия на кнопку */
+		.button:active {
+			/* transform: translateY(4px); /* эффект нажатия */
+			/* box-shadow: none; /* убираем тень */
+			filter: brightness(100%); /* возвращаем яркость в исходное значение */
+			transform: scale(0.99);
+		}
+	</style>
+</head>
+<body>
+	<!-- <h1>Моя веб-страница</h1> -->
+	<h1> <img src="img//Logo2.png" alt="VIKIDOM"> </h1>
 
-    <script>
-     
-      const cityInput = document.getElementById("city");
-      cityInput.addEventListener("keypress", function(event) {
-        if (/[0-9]/.test(event.key)) {
-          event.preventDefault();
-        }
-      });
-
-      const productInput = document.getElementById("product");
-      productInput.addEventListener("keypress", function(event) {
-        if (/[0-9]/.test(event.key)) {
-          event.preventDefault();
-        }
-      });
-
-      const phoneInput = document.getElementById("phone");
-      phoneInput.addEventListener("input", function(event) {
-        const value = event.target.value;
-        const lastChar = value.charAt(value.length - 1);
-        if (isNaN(lastChar)) {
-          event.target.value = value.slice(0, -1);
-          return;
-        }
-        if (value.length === 3 || value.length === 7 || value.length === 10) {
-          event.target.value = `${value}-`;
-        }
-      });
-
-      function calculate(event) {
-        event.preventDefault();
-        const sum = Number(document.getElementById("sum").value);
-        const rate = Number(document.getElementById("rate").value);
-        const x = Math.round(sum / (1 + rate/100) / 10) * 10; // Округление "Math.round()" до ближайшего десятка " / 10) * 10"
-        const discount = Math.round(sum - x);
-        const sumClient = Math.round(x * (1 + rate/100)/ 10) * 10;
-        const city = document.getElementById("city").value;
-        const phone = document.getElementById("phone").value;
-        const product = document.getElementById("product").value;
-        const nameClient = document.getElementById("nameClient").value;
-        const resultsText = `
-        <!--   <h2> Информация: </h2>  убрал в коммент   -->
-          <table>
-            <tr>
-    <td>Имя клиента:</td>
-    <td>${nameClient}</td>
-  </tr>
-  <tr>
-    <td>Телефон:</td>
-    <td>${phone}</td>
-  </tr>
-  <tr>
-    <td>Город:</td>
-    <td>${city}</td>
-  </tr>
-  <tr>
-    <td>Цена партнера:</td>
-    <td>${x.toLocaleString()} р</td>
-  </tr>
-  <tr>
-    <td>Цена клиента:</td>
-    <td>${sumClient.toLocaleString()} р</td>
-  </tr>
-  <tr>
-    <td>Скидка клиенту:</td>
-    <td>${discount.toLocaleString()} р</td>
-  </tr>
-  <tr>
-    <td>Вид товара:</td>
-    <td>${product}</td>
-  </tr>
-</table>
-        `;
-        const resultsDiv = document.getElementById("results");
-        resultsDiv.innerHTML = resultsText;
-
-        // сброс веденных данных
-        const resetBtn = document.querySelector('#reset-btn');
-        const form = document.querySelector('form');
-        const resultDiv = document.getElementById("results");
-
-        resetBtn.addEventListener('click', handleReset);
-
-        function handleReset(event) {
-        form.reset();
-        resultDiv.innerHTML = '';
-        }
-      }  
-              // определяем устройство (смартфон) и задаем условия
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          // document.body.style.zoom = "200%"; // 
-          // document.body.style.transform = "scale(" + window.innerWidth";
-          let screenWidth = window.innerWidth;
-          let zoomValue = screenWidth / 420;
-          document.body.style.zoom = zoomValue;
-          const resultsDiv = document.getElementById("results");
-          resultsDiv.style.padding = "2.5rem 0rem"; /* Отступы. */
-         }
-         else {
-          const resultsDiv = document.getElementById("results");
-          resultsDiv.style.padding = "1.2rem 0rem"; /* Отступы. */
-         }
-    </script>
-  </body>
+	<a href="Percent1.html" class="button button1"></a>
+	<a href="rassrochka.html" class="button button2"></a>
+	<a href="rassrochka.html" class="button button3"></a>
+	<a href="Percent1.html" class="button button4"></a>
+	
+	<script>
+		// здесь можно добавить обработчики событий для каждой кнопки, если нужно
+	</script>
+</body>
 </html>
+
