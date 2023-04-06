@@ -76,6 +76,17 @@
 	
 	<script>
 		// здесь можно добавить обработчики событий для каждой кнопки, если нужно
+		
+		// определяем устройство (смартфон) и задаем условия
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        		// document.body.style.zoom = "200%"; // 
+      			// document.body.style.transform = "scale(" + window.innerWidth";
+      			let screenWidth = window.innerWidth;
+      			let zoomValue = screenWidth / 620;
+      			document.body.style.zoom = zoomValue;
+		}
+
+		
 	</script>
 </body>
 </html>
