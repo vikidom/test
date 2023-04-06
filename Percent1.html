@@ -269,14 +269,16 @@ resultsText += `
       let zoomValue = screenWidth / 420;
       document.body.style.zoom = zoomValue;
       const resultsDiv = document.getElementById("results");
-      resultsDiv.style.padding = "2.5rem 0rem"; /* Отступы. */
+            resultsDiv.style.padding = "2.5rem 0rem"; /* Отступы. */
+        
+      const tableElements = document.getElementsByTagName("table");
+            tableElements[i].style.fontSize = "1em"; // Увеличение размера текста }
       }
         else {
           const resultsDiv = document.getElementById("results");
           resultsDiv.style.padding = "1.2rem 0rem"; /* Отступы. */
           }
-
-
+      
   </script>
   </body>
 </html>
