@@ -17,6 +17,15 @@
 		img {
 			zoom: 100%;
 		}
+		
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+			max-width: 620px;
+		}
 
 		.button {
 			background-size: cover;
@@ -25,6 +34,7 @@
 			height: 300px;
 			display: inline-block;
 			margin-right: 10px;
+			margin-bottom: 10px;
 			cursor: pointer;
 			background-repeat: no-repeat;
 			border-radius: 30px; /* Скругление углов */
@@ -57,11 +67,12 @@
 <body>
 	<!-- <h1>Моя веб-страница</h1> -->
 	<h1> <img src="../img/Logo2.png" alt="VIKIDOM"> </h1>
-
-	<a href="Percent1.html" class="button button1"></a>
-	<a href="rassrochka.html" class="button button2"></a>
-	<a href="rassrochka.html" class="button button3"></a>
-	<a href="Percent1.html" class="button button4"></a>
+	<div class="container">
+		<a href="Percent1.html" class="button button1"></a>
+		<a href="rassrochka.html" class="button button2"></a>
+		<a href="rassrochka.html" class="button button3"></a>
+		<a href="Percent1.html" class="button button4"></a>
+	</div>
 	
 	<script>
 		// здесь можно добавить обработчики событий для каждой кнопки, если нужно
