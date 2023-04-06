@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Процент</title>
+    <!-- Иконка сайта-->
+    <link rel="icon" type="image/x-icon" href="img/icon.ico">
+
+    <style>
+      body {
+        font-family: system-ui,"Segoe UI","Open Sans", "Helvetica Neue", sans-serif;
+        background-color: rgb(192,220,251);
+        line-height: 1.0; /* Межстрочный интервал */
+        text-align: center; /* Выравнивание текста */
+        /* font-size: 1.1em; /* увеличить размер шрифта на % */
+        zoom: 120%; /* увеличить на 20% */
+      }
+
+        /* Стили для формы ввода данных*/
+        form {
+            display: block ; /* Тип отображения */
+            flex-direction: column; /* Направление элементов */
+            align-items: center; /* Выравнивание элементов */
+            gap: 0.5rem; /* Расстояние между элементами */
+            background-color: rgb(225, 240, 255); /* Цвет фона */
+            padding: 1rem 0rem; /* Отступы */
+            border-radius: 8px; /* Скругление углов */
+            line-height: 1.5; /* Межстрочный интервал */
+            margin: 0 auto; /* Автоматические отступы слева и справа */
+            max-width: 400px; /* Максимальная ширина */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень блока */
+        }
+        /* Стили для меток label */
+        label {
+            display: inline-block; /* Тип отображения */
+            width: 100px; /* Ширина */
+            line-height: 2.5; /* Межстрочный интервал */
+            text-align: right; /* Выравнивание текста */
+            margin-right: 0.5rem; /* Отступ справа */
+        }
+
+        /* Стили для полей ввода */
+        input {
+            width: 100px; /* Ширина */
+            height: 15px; /* Высота */
+            padding: 0.5rem; /* Отступы */
+            border: none; /* Граница */
+            border-radius: 5px; /* Скругление углов */
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Тень блока */
+            background-color: rgb(234, 243, 251); /* Цвет фона */
+            color: #555; /* Цвет текста */
+            font-size: 1.2em; /* увеличить размер шрифта на % */
+        }
+
+        /* Стили для полей ввода при фокусе */
+        input:focus {
+            outline: none; /* Обводка */
+            background-color: #ffffff; /* Цвет фона */
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Тень блока */
+        }
+
+        /* Стили для кнопок */
+        button {
+            background-color: rgb(160, 205, 245); /* Цвет фона */
+            border: none; /* Граница */
+            color: white; /* Цвет текста */
+            display: inline-block; /* Тип отображения */
+            font-size: 1.2rem; /* Размер шрифта */
+            font-weight: normal;
+            padding: 0.5rem 0.5rem; /* Отступы */
+            border-radius: 10px; /* Скругление углов */
+            cursor: pointer; /* Курсор */
+            transition: background-color 0.3s ease; /* Переход */
+            width: 120px; /* Ширина */
+            margin-right: 15px; /* Расстояние между кнопками */
+            margin-top: 10px; /* добавляем отступ сверху */
+            }
+        /* Стили для кнопок при наведении */
+        button:hover {
+            background-color: green; /* Цвет фона при наведении */
+            font-size: 1.19rem; /* Размер шрифта */ }
+
+        /* Стили для кнопок при нажатии */
+        button:active {
+            background-color: DarkGreen;
+            transform: scale(0.98); }
+
+        #reset-btn:hover {
+            background-color: orangered; /* Цвет фона при наведении */ }
+            #reset-btn:active {
+            background-color: DarkRed; }
+
+        /* Стили для блока результатов */
+        #results {
+            background-color: rgb(225, 240, 255); /* Цвет фона */
+            /* padding: 0.01rem 0rem; /* Отступы */
+            border-radius: 8px; /* Скругление углов */
+            margin: auto; /* Отступы */
+            margin-top: 15px; /* отступ сверху */
+            max-width: 400px; /* Максимальная ширина */
+            line-height: 1.5; /* Межстрочный интервал */
+            white-space: nowrap; /* Прокрутка текста */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень блока */
+            background-image: url('img/Logo2.png'); /* устанавливаем изображение в качестве фона */
+            background-repeat: no-repeat; /* запрещаем повторять фоновое изображение */
+            background-size: 25%; /* устанавливаем размер фонового изображения */
+            background-position: top 5px left 150px ; /* устанавливаем позицию фонового изображения с помощью отступов */
+            }
+        table {
+          /* margin-top: 20px; /* отступ сверху */
+          margin: 20px auto;
+        }
+        td {
+            padding-left: 20px;
+            text-align: right;
+        }
+
+        header {
+          padding: 1rem; /* Отступы */
+        }
+        h1, h2 {
+            text-align: center;
+        }
+
+
+        /* Стили для изображения */
+        img {
+            max-width: 300px; /* Максимальная ширина изображения в % или px */
+          /*  height: auto; /* Высота изображения автоматически подстраивается, чтобы сохранить пропорции */
+          /*  margin: 0px; /* Отступы вокруг изображения установлены в 0 */
+        }
+
+        select {
+          font-size: 1.0em; /* увеличить размер шрифта на % */
+          width: 205px; /* Ширина */
+          height: 30px; /* Высота */
+        }
+
+      /* Стили для экранов с шириной до 768px */
+      @media screen and (max-width: 1000px) {
+        /* Изменение размера шрифта */    
+       /* body 
+         {zoom: 150%;
+         } */
+        }
+      
+
+    </style>
+  </head>
+  <body>
+    <div id="header">
+    <!-- <h1>РАССРОЧКА</h1> -->
+      <img src="img2/Procent3.png" alt="Процент">
+     <!-- <p>Пожалуйста, заполните форму ниже</p>    убрал в коммент -->
+  </div>
+    <div>
+      <form id="calculationForm">
+        <label for="sum">Сумма (Р):</label>
+        <input type="number" id="sum" name="sum" step="1" value="1000000"><br>
+       
+        <label for="rate">Ставка (%):</label>
+        <input type="number" id="rate" name="rate" step="0.5" value="15"><br>
+        
+        <label for="curator">Куратор (%):</label>
+        <input type="number" id="curator" name="curator" step="0.5" value="1"><br>
+
+         <label for="expense">Расход (%):</label>
+        <input type="number" id="expense" name="expense" step="0.5" value="4"><br>
+
+        <button type="submit">Рассчитать</button>
+        <button id="reset-btn" type="button">Сбросить</button>
+      </form>
+
+      <!-- Добавляем картинку из хостинга или из локальной папки -->
+      <!-- <img src="https://raw.githubusercontent.com/vikidom/vikidom.github.io/main/Logo.png" alt="Логотип"> -->
+      <!-- <img src="rassrochka.jpg" alt="акция"> -->
+
+      <div id="results"></div>
+    </div>
+
+    <script>
+      const form = document.getElementById('calculationForm');
+const results = document.getElementById('results');
+
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const sum = parseFloat(document.getElementById('sum').value);
+  const rate = parseFloat(document.getElementById('rate').value) / 100;
+  const expense = parseFloat(document.getElementById('expense').value) / 100;
+  const curator = parseFloat(document.getElementById('curator').value) / 100;
+
+  const rateAmount = parseFloat(sum * rate).toFixed(2);
+  const ratePercentage = (rate * 100).toFixed(2);
+  const remainingSum = parseFloat(sum - sum * rate).toFixed(2);
+  const curatorAmount = parseFloat(sum * curator).toFixed(2);
+  const curatorPercentage = (curator * 100).toFixed(1);
+  const expenseAmount = parseFloat(sum * expense).toFixed(2);
+  const expensePercentage = (expense * 100).toFixed(2);
+  const bonus = rate - curator - expense;
+  const bonusAmount = parseFloat(sum * bonus).toFixed(2);
+  const bonusPercentage = (bonus * 100).toFixed(2);
+
+  let resultsText = `
+<table>
+<tr>
+  <td>Сумма:</td>
+  <td>${numberWithCommas(sum)} р.</td>
+</tr>
+<tr>
+  <td>Ставка:</td>
+  <td>${ratePercentage}%</td>
+  <td>${numberWithCommas(rateAmount)} р.</td>
+</tr>
+<tr>
+  <td>Цуннаг:</td>
+  <td>${numberWithCommas(remainingSum)} р.</td>
+</tr>
+<tr>
+<td>&nbsp;</td> <!-- Неразрывный пробел в первой ячейке -->
+<td style="border-bottom: 1px solid #ccc;" colspan="2"></td> <!-- Вторая ячейка, объединяющая две колонки и с верхней границей -->
+</tr>`;
+
+if (curator !== 0) {
+resultsText += `
+<tr>
+  <td>Куратор:</td>
+  <td>${curatorPercentage}%</td>
+  <td>${numberWithCommas(curatorAmount)} р.</td>
+</tr>`;
+}
+
+resultsText += `
+<tr>
+  <td>Расход:</td>
+  <td>${expensePercentage}%</td>
+  <td>${numberWithCommas(expenseAmount)} р.</td>
+</tr>
+<tr>
+  <td>Диснарг:</td>
+  <td>${bonusPercentage}%</td>
+  <td>${numberWithCommas(bonusAmount)} р.</td>
+</tr>
+</table>`;
+
+  const resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = resultsText;
+
+        // сброс веденных данных
+        const resetBtn = document.querySelector('#reset-btn');
+        const form = document.querySelector('form');
+        const resultDiv = document.getElementById("results");
+        resetBtn.addEventListener('click', handleReset);
+        function handleReset(event) {
+        form.reset();
+        resultDiv.innerHTML = '';
+        }
+      });
+
+      // определяем устройство (смартфон) и задаем условия
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      // document.body.style.zoom = "200%"; // 
+      // document.body.style.transform = "scale(" + window.innerWidth";
+      let screenWidth = window.innerWidth;
+      let zoomValue = screenWidth / 420;
+      document.body.style.zoom = zoomValue;
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.style.padding = "2.5rem 0rem"; /* Отступы. */
+      }
+        else {
+          const resultsDiv = document.getElementById("results");
+          resultsDiv.style.padding = "1.2rem 0rem"; /* Отступы. */
+          }
+
+
+  </script>
+  </body>
+</html>
