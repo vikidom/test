@@ -46,14 +46,14 @@
       label[for="sum"] {
         padding-left: 65px;
         }
-      label[for="rate"]{   /* задать стили */
+      label[for="rateInput"]{   /* задать стили */
         padding-left: 65px;
         }
         label[for="agent"] {
         padding-left: 65px;
         }
 
-      label[for="expense"] {
+      label[for="expenseInput"] {
         padding-left: 64px;
         }
       
@@ -81,7 +81,7 @@
         text-align: right; /* Выравнивание текста */
         }
     
-      input[name="rate"], input[name="agent"], input[name*="expense"] {   /* задать стили */
+      input[name="rateInput"], input[name="agent"], input[name*="expenseInput"] {   /* задать стили */
         width: 50px; /* Ширина */
         }
       input[name="sumBackInput"], input[name="agentInput"] {   /* задать стили */
@@ -207,10 +207,10 @@
     <div>
       <form onsubmit="calculate(event)">
         <label for="sum">Сумма :</label>
-        <input type="number" id="sum" name="sum" step="1" value="" placeholder="введи сумму" required> 
+        <input type="number" id="sum" name="sum" step="1" value="1000" placeholder="руб" required> 
         <span>₽</span> <br>
-        <label for="rate">Ставка :</label>
-        <input type="number" id="rate" name="rate" step="0.5" value="15" >
+        <label for="rateInput">Ставка :</label>
+        <input type="number" id="rateInput" name="rateInput" step="0.5" value="15" >
         <span>% &nbsp  &nbsp </span>
         <label for="sumBackInput">или &nbsp</label>
         <input type="number" id="sumBackInput" name="sumBackInput" step="1" value="" placeholder="верну">
@@ -219,8 +219,8 @@
         <span>% &nbsp &nbsp</span>
         <label for="agentInput">или &nbsp</label>
         <input type="number" id="agentInput" name="agentInput" step="1" value="" placeholder="дам"><br>
-        <label for="expense">Расход :</label>
-        <input type="number" id="expense" name="expense" step="0.5" value="">
+        <label for="expenseInput">Расход :</label>
+        <input type="number" id="expenseInput" name="expenseInput" step="0.5" value="4">
         <span>%</span> <br>
 
         <div id="button-container">
@@ -256,24 +256,31 @@ function formatNumber2(number) {
     event.preventDefault();
   
   const sum = parseFloat(document.getElementById('sum').value);
-  const rate = parseFloat(document.getElementById('rate').value);
-  const expense = parseFloat(document.getElementById('expense').value);
+  const rateInput = parseFloat(document.getElementById('rateInput').value);
+  const expenseInput = parseFloat(document.getElementById('expenseInput').value);
   const agent = parseFloat(document.getElementById('agent').value);
   
   const sumBackInput = parseFloat(document.getElementById('sumBackInput').value); // тест
   const agentInput = parseFloat(document.getElementById('agentInput').value); // тест
 
 
-  const ratePercent = parseFloat(rate / 100);
+  const ratePercent = parseFloat(rateInput / 100);
   const rateAmount = parseFloat(sum * ratePercent);
   const agentPercent = parseFloat(agent / 100);
   //const agentAmount = parseFloat(sum * agentPercent);
-  const expensePercent = parseFloat(expense / 100);
-  const expenseAmount = parseFloat(sum * expensePercent);
-// const bonus = rate - expense - agent;
+  const expensePercent = parseFloat(expenseInput / 100);
+  const expense = expenseInput && expenseInput !== 0 ? expenseInput : 0;
+  //const expenseAmount1 = parseFloat(sum * expensePercent);
+  const expenseAmount = expenseInput && expenseInput !== 0 ? sum * expensePercent : 0;
+// const bonus = rateInput - expenseInput - agent;
   
-  
-  const sumBack = parseFloat(sum - rateAmount);
+// const sumBack = parseFloat(sum - rateAmount);
+
+ // УСЛОВИЕ >> проверяем, sumBackText = sumBackInput, если sumBackInput не равно 0 и не пусто иначе sumBackText=sumBack
+const sumBackText = sumBackInput && sumBackInput !== 0 ? sumBackInput : sumBack = rateInput && rateInput !== 0 ? sum - rateAmount : 0 ;
+const rate = sumBackInput && sumBackInput !== 0 ? (sum-sumBackInput)/sum * 100 : rateInput1 =  rateInput && rateInput !== 0 ? rateInput : 0;
+const rateAmount1 = sumBackInput && sumBackInput !== 0 ? (rate/100)*sum : rateAmount2 = rateAmount && rateAmount !== 0 ? rateAmount : 0;
+
 
 // УСЛОВИЕ >> проверяем, если значение agentAmount не "пусто" и не равно "0", sum * agentPercent иначе = 0
 const agentAmount = agent && agent !== 0 ? sum * agentPercent : 0;
@@ -287,18 +294,8 @@ const agentText = agentText1 && agentText1 !== 0 ? `
   <td>${formatNumber(agentText1)} ₽</td>
 </tr>` : '';                              // конец 
 
-
- // УСЛОВИЕ >> проверяем, sumBackText = sumBackInput, если sumBackInput не равно 0 и не пусто иначе sumBackText=sumBack
-const sumBackText = sumBackInput && sumBackInput !== 0 ? sumBackInput : sumBack;
-const rate1 = sumBackInput && sumBackInput !== 0 ? (sum-sumBackInput)/sum * 100 : rate;
-const rateAmount1 = sumBackInput && sumBackInput !== 0 ? (rate1/100)*sum : rateAmount;
-
-
-
 const bonusAmount = parseFloat(sum - parseFloat(sumBackText) - agentText1 - expenseAmount);
-
 const bonusPercent = bonusAmount / sum * 100;
-
 
   const resultsText = `
 <table>
@@ -308,7 +305,7 @@ const bonusPercent = bonusAmount / sum * 100;
 </tr>
 <tr>
   <td>Разница:</td>
-  <td>${formatNumber2(rate1)}%</td>
+  <td>${formatNumber2(rate)}%</td>
   <td>${formatNumber(rateAmount1)} ₽</td>
 </tr>
 <tr>
