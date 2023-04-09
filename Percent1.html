@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Процент</title>
+    <title>%% ₽</title>
     <!-- Иконка сайта-->
     <link rel="icon" type="image/x-icon" href="../img/icon.ico">
 
     <style>
       body {
         font-family: system-ui,"Segoe UI","Open Sans", "Helvetica Neue", sans-serif;
-        background-color: rgb(192,220,251);
+        background-color: #f0f0f0;
         line-height: 1.0; /* Межстрочный интервал */
         text-align: center; /* Выравнивание текста */
         /* font-size: 1.1em; /* увеличить размер шрифта на % */
@@ -26,7 +26,7 @@
         align-items: center; /* Выравнивание элементов */
         text-align: left; /* Выравнивание текста */
         gap: 0.5rem; /* Расстояние между элементами */
-        background-color: rgb(225, 240, 255); /* Цвет фона */
+        background-color: #ffffff; /* Цвет фона */
         padding: 1rem 0rem; /* Отступы */
         border-radius: 8px; /* Скругление углов */
         line-height: 2.5; /* Межстрочный интервал */
@@ -69,13 +69,13 @@
 /* - - - - - - - -   В В О Д   Д А Н Н Ы Х  - - - - - - - - - - -  */
       /* Стили для полей ввода */
       input {
-        width: 140px; /* Ширина */
+        width: 120px; /* Ширина */
         height: 30px; /* Высота */
         padding: 0rem; /* Отступы */
         border: none; /* Граница */
         border-radius: 5px; /* Скругление углов */
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Тень блока */
-        background-color: rgb(234, 243, 251); /* Цвет фона */
+        background-color: #f0f0f0; /* Цвет фона */
         color: #555; /* Цвет текста */
         font-size: 110%; /* увеличить размер шрифта на % */
         text-align: right; /* Выравнивание текста */
@@ -112,7 +112,7 @@
 
         /* Стили для кнопок */
       button {
-            background-color: rgb(160, 205, 245); /* Цвет фона */
+            background-color: gray; /* Цвет фона */
             border: none; /* Граница */
             color: white; /* Цвет текста */
             display: inline-block; /* Тип отображения */
@@ -143,7 +143,7 @@
 
       /* Стили для блока результатов */
       #results {
-            background-color: rgb(225, 240, 255); /* Цвет фона */
+            background-color: #ffffff; /* Цвет фона */
             /* padding: 0.01rem 0rem; /* Отступы */
             border-radius: 8px; /* Скругление углов */
             margin: auto; /* Отступы */
@@ -176,7 +176,7 @@
 
       /* Стили для изображения */
       img {
-            max-width: 300px; /* Максимальная ширина изображения в % или px */
+            max-width: 30%; /* Максимальная ширина изображения в % или px */
           /*  height: auto; /* Высота изображения автоматически подстраивается, чтобы сохранить пропорции */
           /*  margin: 0px; /* Отступы вокруг изображения установлены в 0 */
         }
@@ -201,26 +201,26 @@
   <body>
     <div id="header">
     <!-- <h1>РАССРОЧКА</h1> -->
-      <img src="../img/Procent3.png" alt="Процент">
+      <img src="../img/percent-tinkof.png" alt="Процент">
      <!-- <p>Пожалуйста, заполните форму ниже</p>    убрал в коммент -->
   </div>
     <div>
       <form onsubmit="calculate(event)">
         <label for="sum">Сумма :</label>
-        <input type="number" id="sum" name="sum" step="1" value="" placeholder="введите сумму" required> 
+        <input type="number" id="sum" name="sum" step="1" value="1000" placeholder="руб" required> 
         <span>₽</span> <br>
         <label for="rateInput">Ставка :</label>
-        <input type="number" id="rateInput" name="rateInput" step="0.5" value="" >
+        <input type="number" id="rateInput" name="rateInput" step="0.5" value="15" >
         <span>% &nbsp  &nbsp </span>
         <label for="sumBackInput">или &nbsp</label>
-        <input type="number" id="sumBackInput" name="sumBackInput" step="1" value="" placeholder="верну">
+        <input type="number" id="sumBackInput" name="sumBackInput" step="1" value="" placeholder="верну"><br>
         <label for="agent">Агенту :</label>
-        <input type="number" id="agent" name="agent" step="0.1" value="">
+        <input type="number" id="agent" name="agent" step="0.1" value="1">
         <span>% &nbsp &nbsp</span>
         <label for="agentInput">или &nbsp</label>
         <input type="number" id="agentInput" name="agentInput" step="1" value="" placeholder="дам"><br>
         <label for="expenseInput">Расход :</label>
-        <input type="number" id="expenseInput" name="expenseInput" step="0.5" value="">
+        <input type="number" id="expenseInput" name="expenseInput" step="0.5" value="4">
         <span>%</span> <br>
 
         <div id="button-container">
@@ -294,29 +294,51 @@ const agentText = agentText1 && agentText1 !== 0 ? `
   <td>${formatNumber(agentText1)} ₽</td>
 </tr>` : '';                              // конец 
 
-const bonusAmount = parseFloat(sum - parseFloat(sumBackText) - agentText1 - expenseAmount);
+const bonusAmount = parseFloat(sum - sumBackText - agentText1 - expenseAmount);
 const bonusPercent = bonusAmount / sum * 100;
 
+const returnSum = sumBackText + agentText1;
+
+const remainder = sum - returnSum;
+
   const resultsText = `
+
 <table>
-  <tr>
+<tr>
   <td>Сумма:</td>
+  <td></td>
   <td>${formatNumber(sum)} ₽</td>
 </tr>
 <tr>
   <td>Разница:</td>
-  <td>${formatNumber2(rate)}%</td>
+  <td>${formatNumber2(rate)} %</td>
   <td>${formatNumber(rateAmount1)} ₽</td>
 </tr>
 <tr>
   <td>Клиенту:</td>
+  <td></td>
   <td>${formatNumber(sumBackText)} ₽</td>
 </tr>
-<tr>
-<td>&nbsp;</td> <!-- Неразрывный пробел в первой ячейке -->
-<td style="border-bottom: 1px solid #ccc;" colspan="2"></td> <!-- Вторая ячейка, объединяющая две колонки и с верхней границей -->
-</tr>
+
+<tr><td></td></tr>   <!-- пустая строка для разрыва -->
+<tr><td></td></tr>   <!-- пустая строка для разрыва -->
+<tr><td></td></tr>   <!-- пустая строка для разрыва -->
+
 ${agentText}           <!-- Вывод по условии -->
+
+<tr>
+<td>Отдать:</td>
+<td></td>
+  <td>${formatNumber(returnSum)} ₽</td>
+</tr>
+
+<tr><td></td></tr> <tr><td></td></tr> <tr><td></td></tr>  <!-- три пустых строки для разрыва -->
+
+<tr>
+  <td></td> <!-- Неразрывный пробел в первой ячейке -->
+  <td style="border-bottom: 1px solid #ccc;" colspan="2"></td> <!-- Вторая ячейка, объединяющая две колонки и с верхней границей -->
+</tr>
+
 <tr>
   <td>Расход:</td>
   <td>${formatNumber2(expense)} %</td>
@@ -326,6 +348,12 @@ ${agentText}           <!-- Вывод по условии -->
   <td>Вычет:</td>
   <td>${formatNumber2(bonusPercent)} %</td>
   <td>${formatNumber(bonusAmount)} ₽</td>
+ </tr>
+
+ <tr>
+<td>Остаток:</td>
+<td></td>
+  <td>${formatNumber(remainder)} ₽</td>
 </tr>
 </table>`;
 
